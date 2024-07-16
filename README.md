@@ -8,7 +8,8 @@
 - Have used multi auth sessions 
 - Fix QR code in terminal & pairing code
 - Use Pairing Code: ```node . --pairing```
-- Use QR Code: ```node .```
+- Use QR Code: ```node . or npm start```
+- Fix game & add Ular Tangga
 - Buy for Script no encryption ```main.js & index.js```
 
  ## SCRIPTS MUST USE THE WEB API BELOW
