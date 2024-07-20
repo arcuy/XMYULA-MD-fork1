@@ -40,7 +40,7 @@
     "license": "MIT",
     "dependencies": {
         "@adiwajshing/baileys": "npm:@whiskeysockets/baileys",
-        "@bochilteam/scraper": "^4.2.4",
+        "@bochilteam/scraper": "^5.0.1",
         "@vitalets/google-translate-api": "^9.2.0",
         "@xct007/frieren-scraper": "github:xct007/frieren-scraper",
         "acrcloud": "^1.4.0",
