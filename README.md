@@ -20,6 +20,8 @@
 
 - Itsrose API [`Website`](https://dash.itsrose.rest) ```Must Use```
 
+After registering and getting an apikey, you can paste your apikey in config.js 
+
 ## MY GROUPS & NUMBERS
 - Report/Ask [`My Whatsapp`](https://wa.me/6281283516246)
 
