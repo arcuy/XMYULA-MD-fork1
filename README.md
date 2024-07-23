@@ -9,8 +9,7 @@
 - Fix QR code in terminal & pairing code
 - Use Pairing Code: ```node . --pairing```
 - Use QR Code: ```node . or npm start```
-- Fix game & add Ular Tangga
-- Buy for Script no encryption ```main.js & index.js```
+- Fix game & add Snakes and ladders
 
  ## SCRIPTS MUST USE THE WEB API BELOW
   
