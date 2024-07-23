@@ -931,8 +931,8 @@ export async function participantsUpdate( { id, participants, action }) {
                         } catch (e) {} finally {
                             text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '') :
                                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                                let wel = 'https://telegra.ph/file/6922e4375c183c8d1cfcb.jpg'  //https://telegra.ph/file/96c857aa540aef7d385eb.jpg
-                                let lea = 'https://telegra.ph/file/8c7792e78ed015a7d0a59.jpg'  //https://telegra.ph/file/999b3af6dac1b48769ee6.jpg
+                                let wel = global.welcome
+                                let lea = global.leave
                              
                     await this.sendMessage(id, {
                             text: text,
