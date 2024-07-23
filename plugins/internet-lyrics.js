@@ -1,4 +1,4 @@
-import { lyrics } from '@bochilteam/scraper'
+import { lyrics } from '@bochilteam/scraper';
 
 var handler = async (m, {
 	conn,
@@ -10,11 +10,15 @@ var handler = async (m, {
 		if (!teks) throw `Use example ${usedPrefix}${command} Indonesia raya`
 	try {
 		var maxim = await lyrics(teks);
-		let data = `*Title :* ${maxim.title}
-*Author :* ${maxim.author}
-
-*LYRICS*
-${maxim.lyrics}`
+		let data = `*Title :* \`${maxim.title}\`\n`
+		data += `*Artist :* ${maxim.artist}\n`
+		data += `*Spotify :* ${maxim.spotify}\n\n`
+		data += `\`LYRICS\`\n`
+		for (let v of maxim.lyrics) {
+		if ( v.type === 'lyric') {
+		data += `*${v.text}*\n`
+		    }
+		}
 		conn.sendMessage(m.chat, {
                 text: data,
                 contextInfo: {
