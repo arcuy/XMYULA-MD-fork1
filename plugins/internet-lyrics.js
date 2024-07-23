@@ -1,4 +1,4 @@
-import { lyrics } from '@bochilteam/scraper';
+import api from 'api-dylux';
 
 var handler = async (m, {
 	conn,
@@ -9,23 +9,19 @@ var handler = async (m, {
 		var teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : ''
 		if (!teks) throw `Use example ${usedPrefix}${command} Indonesia raya`
 	try {
-		var maxim = await lyrics(teks);
+		var maxim = await api.lyrics(teks);
+		let lyricst = maxim.lyrics
 		let data = `*Title :* \`${maxim.title}\`\n`
-		data += `*Artist :* ${maxim.artist}\n`
-		data += `*Spotify :* ${maxim.spotify}\n\n`
-		data += `\`LYRICS\`\n`
-		for (let v of maxim.lyrics) {
-		if ( v.type === 'lyric') {
-		data += `*${v.text}*\n`
-		    }
-		}
+		data += `*Artist :* ${maxim.artist}\n\n`
+		data += `\`LYRICS\`\n\n`
+		data += lyricst.replace('\'')
 		conn.sendMessage(m.chat, {
                 text: data,
                 contextInfo: {
                     externalAdReply: {
                         title: "Lyrics Search",
                         body: "Powered by Maximus",
-                        thumbnailUrl: "https://telegra.ph/file/8cc4c40b303872675f7bb.jpg",
+                        thumbnailUrl: maxim.image ? maxim.image : "https://telegra.ph/file/8cc4c40b303872675f7bb.jpg",
                         sourceUrl: "",
                         mediaType: 1,
                         showAdAttribution: true,
