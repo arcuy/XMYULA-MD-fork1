@@ -10,12 +10,14 @@
 - Use Pairing Code: ```node . --pairing```
 - Use QR Code: ```node . or npm start```
 - Fix game & add Snakes and ladders
+- Scammer Number +62 815-1572-3808
 
  ## SCRIPTS MUST USE THE WEB API BELOW
   
 - BetaBotz API [`Website`](https://api.betabotz.eu.org) ```Must Use```
   
-- Botcahx API [`Website`](https://api.botcahx.eu.org) ```Must Use```
+- Botcahx API [`Website`](https://api.botcahx.eu.org)
+```Must Use```
 
 - Itsrose API [`Website`](https://dash.itsrose.rest) ```Must Use```
 
