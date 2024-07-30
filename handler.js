@@ -461,7 +461,7 @@ export async function handler(chatUpdate) {
                 if (!('listStr' in chat))
                     chat.listStr = {}
                 if (!('delete' in chat))
-                    chat.delete = false
+                    chat.delete = true
                 if (!('antiLinkkick' in chat)) 
                     chat.antiLinkkick = false 
                 if (!('antiLinkdelete' in chat))
@@ -508,7 +508,7 @@ export async function handler(chatUpdate) {
                 sPromote: '',
                 sDemote: '',
                 listStr: {},
-                delete: false,
+                delete: true,
                 antiLinkkick: false,
                 antiLinkdelete: false,
                 pembatasan: false,
