@@ -18,14 +18,21 @@ let handler = async (m, {
             mimetype: "audio/mp4",
             fileName: Ytdl.meta.title,
             contextInfo: {
-                externalAdReply: {
-                    showAdAttribution: true,
-                    mediaType: 2,
-                    mediaUrl: args[0],
-                    title: Ytdl.meta.title,
-                    body: dls,
-                    sourceUrl: args[0],
-                    thumbnail: ytthumb
+                forwardingScore: 1,
+                isForwarded: true,
+                   forwardedNewsletterMessageInfo: {
+                   newsletterJid: global.info.channel,
+                   serverMessageId: null,
+                   newsletterName: global.info.namechannel,
+                   },
+                   externalAdReply: {
+                       showAdAttribution: true,
+                       mediaType: 2,
+                       mediaUrl: args[0],
+                       title: Ytdl.meta.title,
+                       body: dls,
+                       sourceUrl: args[0],
+                       thumbnail: ytthumb
                 }
             }
         }
@@ -33,11 +40,17 @@ let handler = async (m, {
         await conn.sendMessage(m.chat, doc, {
             quoted: m
         })
+        await conn.sendMessage(m.chat, {
+             document: Ytdl.buffer, 
+             mimetype: 'audio/mpeg', 
+             fileName: `${Ytdl.meta.title}.mp3`,
+             caption: ''
+             }, {quoted: m})
 
     } catch {
         try {
             
-            let yt = await youtubedlv2(args[0]).catch(async _ => await youtubedl(args[0]))
+            let yt = await youtubedl(args[0]).catch(async _ => await youtubedlv2(args[0]))
             let link = await yt.audio["128kbps"].download()
             let ytl = "https://youtube.com/watch?v="
             let dls = "Succesfully Download From Ytdl"
@@ -64,6 +77,12 @@ let handler = async (m, {
             await conn.sendMessage(m.chat, doc, {
                 quoted: m
             })
+            await conn.sendMessage(m.chat, {
+                document: { url: link }, 
+                mimetype: 'audio/mpeg', 
+                fileName: `${yt.title}.mp3`,
+                caption: ''
+                }, {quoted: m})
 
         } catch {
             await m.reply(global.eror)
