@@ -92,7 +92,7 @@
         "url-regex-safe": "^3.0.0",
         "yargs": "^17.5.1",
         "yt-search": "^2.10.4",
-        "ytdl-core": "github:soya-daizu/ytdl-core#sig-patch"
+        "ytdl-core": "github:distubejs/ytdl-core"
     },
     "optionalDependencies": {
         "wa-sticker-formatter": "^4.3.2"
