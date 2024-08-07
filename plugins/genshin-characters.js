@@ -5,7 +5,7 @@ const handler = async (m, { conn, args, text, usedPrefix, command }) => {
   
 *-= LIST CHARACTERS =-*
 
-albedo, alhaitham, aloy, amber, anemo, arataki itto, arlecchino, baizhu, barbara, beidou, bennett, candace, charlotte, chevreuse, chiori, chongyun, clorinde, collei, cyno, dehya, dendro, diluc, diona, dori, eula, faruzan, fischl, freminet, furina, ganyu, gaming, geo, gorou, hydro, hu tao, jean, kaedehara kazuha, kaeya, kamisato ayaka, kamisato ayato, kaveh, keqing, kirara, klee, kujou sara, kuki shinobu, layla, lisa, lynette, lyney, mika, mona, nahida, navia, neuvillette, nilou, ningguang, noelle, qiqi, raiden shogun, sethos, sigewinne, razor, rosaria, sangonomiya kokomi, sayu, shenhe, shikanoin heizou, sucrose, tartaglia, thoma, tighnari, venti, wanderer, wriothesley, xiangling, xianyun, xiao, xingqiu, xinyan, yae miko, yanfei, yaoyao, yelan, yoimiya, yun jin, zhongli
+albedo, alhaitham, aloy, amber, anemo, arataki itto, arlecchino, baizhu, barbara, beidou, bennett, candace, charlotte, chevreuse, chiori, chongyun, clorinde, collei, cyno, dehya, dendro, diluc, diona, dori, electro, emilie, eula, faruzan, fischl, freminet, furina, ganyu, gaming, geo, gorou, hydro, hu tao, jean, kaedehara kazuha, kaeya, kamisato ayaka, kamisato ayato, kaveh, keqing, kirara, klee, kujou sara, kuki shinobu, layla, lisa, lynette, lyney, mika, mona, nahida, navia, neuvillette, nilou, ningguang, noelle, qiqi, raiden shogun, sethos, sigewinne, razor, rosaria, sangonomiya kokomi, sayu, shenhe, shikanoin heizou, sucrose, tartaglia, thoma, tighnari, venti, wanderer, wriothesley, xiangling, xianyun, xiao, xingqiu, xinyan, yae miko, yanfei, yaoyao, yelan, yoimiya, yun jin, zhongli
 `
   let Maximus;
   
@@ -118,6 +118,10 @@ albedo, alhaitham, aloy, amber, anemo, arataki itto, arlecchino, baizhu, barbara
        case 'travelers electro':
        case 'electro travelers':
       Maximus = 'Electro';
+      break;
+       case 'emilie':
+       case 'Emilie':
+      Maximus = 'Emilie';
       break;
        case 'eula':
       Maximus = 'Eula';
@@ -333,7 +337,7 @@ albedo, alhaitham, aloy, amber, anemo, arataki itto, arlecchino, baizhu, barbara
 
 *-= LIST CHARACTERS =-*
 
-albedo, alhaitham, aloy, amber, anemo, arataki itto, arlecchino, baizhu, barbara, beidou, bennett, candace, charlotte, chevreuse, chiori, chongyun, clorinde, collei, cyno, dehya, dendro, diluc, diona, dori, eula, faruzan, fischl, freminet, furina, ganyu, gaming, geo, gorou, hydro, hu tao, jean, kaedehara kazuha, kaeya, kamisato ayaka, kamisato ayato, kaveh, keqing, kirara, klee, kujou sara, kuki shinobu, layla, lisa, lynette, lyney, mika, mona, nahida, navia, neuvillette, nilou, ningguang, noelle, qiqi, raiden shogun, sethos, sigewinne, razor, rosaria, sangonomiya kokomi, sayu, shenhe, shikanoin heizou, sucrose, tartaglia, thoma, tighnari, venti, wanderer, wriothesley, xiangling, xianyun, xiao, xingqiu, xinyan, yae miko, yanfei, yaoyao, yelan, yoimiya, yun jin, zhongli
+albedo, alhaitham, aloy, amber, anemo, arataki itto, arlecchino, baizhu, barbara, beidou, bennett, candace, charlotte, chevreuse, chiori, chongyun, clorinde, collei, cyno, dehya, dendro, diluc, diona, dori, electro, emilie, eula, faruzan, fischl, freminet, furina, ganyu, gaming, geo, gorou, hydro, hu tao, jean, kaedehara kazuha, kaeya, kamisato ayaka, kamisato ayato, kaveh, keqing, kirara, klee, kujou sara, kuki shinobu, layla, lisa, lynette, lyney, mika, mona, nahida, navia, neuvillette, nilou, ningguang, noelle, qiqi, raiden shogun, sethos, sigewinne, razor, rosaria, sangonomiya kokomi, sayu, shenhe, shikanoin heizou, sucrose, tartaglia, thoma, tighnari, venti, wanderer, wriothesley, xiangling, xianyun, xiao, xingqiu, xinyan, yae miko, yanfei, yaoyao, yelan, yoimiya, yun jin, zhongli
 `
 }
   let data = await cari(Maximus)
