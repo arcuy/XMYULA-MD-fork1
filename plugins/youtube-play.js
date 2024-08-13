@@ -1,5 +1,6 @@
 import search from 'yt-search';
 import fetch from 'node-fetch';
+import api from 'btch-downloader';
 
 let handler = async (m, { conn, text }) => {
   if (!text) return m.reply('*example*: .play eula song');
@@ -45,12 +46,18 @@ Sent By ${global.info.namebot}`;
             }, {});
 
     if (detik > 900) return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit`);
+    try {
     const yt = await( await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${links}&apikey=${lann}`)).json()
-    await conn.sendMessage(m.chat, { audio: { url: yt.result.mp4 }, mimetype: 'audio/mpeg' }, { quoted: m });
-
+    await conn.sendMessage(m.chat, { audio: { url: yt.result.mp3 }, mimetype: 'audio/mpeg' }, { quoted: m });
   } catch (e) {
     console.log(e);
-    m.reply(`An error occurred while searching for the song: ${e.message}`);
+    try {
+        const xmwjj = await api.youtube(links)
+        await conn.sendMessage(m.chat, { audio: { url: xmwj.mp4 }, mimetype: 'audio/mpeg' }, { quoted: m });
+        } catch (e) {
+           console.log(e)
+           m.reply(`An error occurred while searching for the song: ${e.message}`);
+        }
   }
 };
 
