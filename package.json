@@ -53,7 +53,7 @@
         "canvas": "^2.11.2",
         "cfonts": "^2.10.0",
         "chalk": "^5.0.0",
-        "cheerio": "github:Tiooxy/cheerio",
+        "cheerio": "github:XM4ZE/cheerio",
         "colors": "1.4.0",
         "express": "^4.17.3",
         "file-type": "^17.1.1",
