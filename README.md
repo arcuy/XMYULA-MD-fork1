@@ -28,7 +28,7 @@ After registering and getting an apikey, you can paste your apikey in config.js
 
 - My Bot Group [`Whatsapp Groups`](https://chat.whatsapp.com/FJRtTzRKxP8A2wT6fcCW3s)
 
-- My Channel [`Whatsapp Channel`](https://chat.whatsapp.com/FJRtTzRKxP8A2wT6fcCW3s)
+- My Channel [`Whatsapp Channel`](https://whatsapp.com/channel/0029VaL28ZqFSAtCdSU5EX0M)
 
 - My Genshin impact Group [`Whatsapp Groups`](https://chat.whatsapp.com/LZCnnSQFPkF3C6zrDcH5n8)
 
