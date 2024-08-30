@@ -4,7 +4,6 @@ import api from 'btch-downloader';
 
 let handler = async (m, { conn, text }) => {
   if (!text) return m.reply('*example*: .play eula song');
-  try {
     let results = await search(text);
     let videoId = results.videos[0].videoId;
     let durasi = results.videos[0].timestamp;
