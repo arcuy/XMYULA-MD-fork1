@@ -70,10 +70,14 @@ global.fb = 'https://facebook.com/maximusstoreindonesia' // boleh taruh link fb 
 global.ig = 'https://instagram.com/maximusstore.id' // boleh taruh link ig kalian
 global.gcbot = 'https://whatsapp.com/channel/0029VaL28ZqFSAtCdSU5EX0M' // boleh taruh link group kalian
 global.qris = 'https://telegra.ph/file/f11ccd2ca8a5136aacfb3.jpg' // Wajib isi untuk pembayaran. isi dengan qris
-global.welcome = 'https://telegra.ph/file/6922e4375c183c8d1cfcb.jpg' // Welcome Group 
-global.leave = 'https://telegra.ph/file/8c7792e78ed015a7d0a59.jpg' // Leave Group
 global.vn = 'https://github.com/XM4ZE/DATABASE/raw/master/wallpaper/KARA.mp3?raw=true' // Allmenu Voice
+
+
+
+/*=========== THUMBNAIL ===========*/
 global.thumvid = 'https://github.com/XM4ZE/DATABASE/raw/master/wallpaper/Vid_20240220_073653.mp4?raw=true' // Allmenu Video thumbnail
+global.welcome = '' // [OPSIONAL] isi dengan link thumbnail welcome kalian
+global.leave = '' // [OPSIONAL] isi dengan link thumbnail leave kalian
 global.maximus = '' // [OPSIONAL] isi dengan link thumbnail kalian. link ini akan muncul di semua menu dan taruh di tengah-tengah simbol itu
 
 
