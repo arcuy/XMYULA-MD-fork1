@@ -52,7 +52,7 @@ Sent By ${global.info.namebot}`;
     console.log(e);
     try {
         const xmwjj = await api.youtube(links)
-        await conn.sendMessage(m.chat, { audio: { url: xmwj.mp4 }, mimetype: 'audio/mpeg' }, { quoted: m });
+        await conn.sendMessage(m.chat, { audio: { url: xmwjj.mp4 }, mimetype: 'audio/mpeg' }, { quoted: m });
         } catch (e) {
            console.log(e)
            m.reply(`An error occurred while searching for the song: ${e.message}`);
