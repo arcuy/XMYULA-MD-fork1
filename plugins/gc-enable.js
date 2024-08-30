@@ -15,6 +15,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 *• antilinkdelete*
 *• antilinkwa* 
 *• antiporn* 
+*• antifoto* 
 *• antitoxic* 
 *• antibadword*
 *• antidelete*
@@ -71,24 +72,15 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
             }
             chat.adminonly = isEnable
             break
-case 'antifoto':
-      if (m.isGroup) {
-        if (!(isAdmin || isOwner)) {
-          global.dfail('admin', m, conn)
-          throw false
-        }
-      }
-      chat.antiFoto = isEnable
-      break
-      case 'antibot':
-      if (m.isGroup) {
-        if (!(isAdmin || isOwner)) {
-          global.dfail('admin', m, conn)
-          throw false
-        }
-      }
-      chat.antiBot = isEnable
-      break
+        case 'antibot':
+            if (m.isGroup) {
+                if (!(isAdmin || isOwner)) {
+                    global.dfail('admin', m, conn)
+                    throw false
+                }
+            }
+            chat.antiBot = isEnable
+            break
         case 'detect':
             if (m.isGroup) {
                 if (!(isAdmin || isOwner)) {
@@ -187,6 +179,15 @@ case 'antifoto':
                 }
             }
             chat.antiPorn = isEnable
+            break
+        case 'antifoto':
+            if (m.isGroup) {
+                if (!(isAdmin || isOwner)) {
+                    global.dfail('admin', m, conn)
+                    throw false
+                }
+            }
+            chat.antiFoto = isEnable
             break
         case 'nsfw':
             if (m.isGroup) {
