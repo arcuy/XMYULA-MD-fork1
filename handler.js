@@ -54,6 +54,8 @@ export async function handler(chatUpdate) {
                     user.freelimit = 0
                 if (!isNumber(user.lastclaim))
                     user.lastclaim = 0
+                if (!isNumber(user.payment))
+                    user.payment = 0
                 if (!isNumber(user.skata))
                     user.skata = 0
                 if (!isNumber(user.joinlimit))
@@ -323,6 +325,7 @@ export async function handler(chatUpdate) {
                 limit: 10,
                 freelimit: 0,
                 lastclaim: 0,
+                payment: 0,
                 skata: 0,
                 registered: false,
                 name: m.name,
@@ -472,6 +475,8 @@ export async function handler(chatUpdate) {
                     chat.antiSticker = false
                 if (!('antiLinkWa' in chat))
                     chat.antiLinkWa = false
+                if (!('antiFoto' in chat))
+                    chat.antiFoto = false
                 if (!('antiPorn' in chat))
                     chat.antiPorn = false
                 if (!('viewonce' in chat))
@@ -513,6 +518,7 @@ export async function handler(chatUpdate) {
                 antiLinkdelete: false,
                 pembatasan: false,
                 antiLinkWa: false,
+                antiFoto: false,
                 antiPorn: false,
                 antiSticker: false,
                 viewonce: false,
@@ -543,6 +549,7 @@ export async function handler(chatUpdate) {
                 if (!isNumber(settings.lastcleartmp)) settings.lastcleartmp = 0
                 if (!isNumber(settings.status)) settings.status = 0
                 if (!('anticall' in settings)) settings.anticall = true
+                if (!('toko' in settings)) settings.toko = true
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
                 autoread: true,
@@ -556,6 +563,7 @@ export async function handler(chatUpdate) {
                 lastcleartmp: 0,
                 status: 0,
                 anticall: true,
+                toko: true,
             }
         } catch (e) {
             console.error(e)
@@ -786,11 +794,11 @@ export async function handler(chatUpdate) {
                 	this.reply(m.chat, `[💬] Umurmu harus diatas ${plugin.age} Tahun untuk menggunakan fitur ini...`, m)	
                     continue
                 }
-                //let isCmddd =/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(m.text)
-                //if ( isCmddd && !isPrems && !m.isGroup ) {
+                let isCmddd =/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(m.text)
+                if ( isCmddd && !isPrems && !m.isGroup ) {
                     //this.sendMessage(m.chat, { text: `⚠️ Menggunakan bot dalam obrolan pribadi hanya untuk pengguna premium.\n\n*PREMIUM USER PRICE LIST*\n\n*3 Day premium*\n- OrderID: 3\n- Price: Rp. 5.000 IDR\n\n*7 Day premium*\n- OrderID: 7\n- Price: Rp. 10.000 IDR\n\n*30 Day premium*\n- OrderID: 30\n- Price: Rp. 15.000 IDR\n\n*60 Day premium*\n- OrderID: 60\n- Price: Rp. 30.000 IDR\n\n*90 Day premium*\n- OrderID: 90\n- Price: Rp. 40.000 IDR\n\n*365 Day premium*\n- OrderID: 365\n- Price: Rp. 115.000 IDR\n\nTolong ikuti cara pembayaran ini.\n\nSilahkan tulis seperti ini : *.order <OrderID>*\nContoh: *.order 30*\n\nJika anda terlalu bodoh. anda bisa langsung menghubungi nomor owner kami melalui link di bawah ini:\nwa.me/${global.info.nomorown}\n\nThank you for using our bot #MaximusStore`, contextInfo: { mentionedJid: [m.sender], externalAdReply: { title: '', body: '', thumbnailUrl: "https://telegra.ph/file/0b32e0a0bb3b81fef9838.jpg", sourceUrl: "", mediaType: 1, renderLargerThumbnail: true }} })
-                //    continue
-                //}
+                    continue
+                }
                 let extra = {
                     match,
                     usedPrefix,
@@ -931,8 +939,8 @@ export async function participantsUpdate( { id, participants, action }) {
                         } catch (e) {} finally {
                             text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '') :
                                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                                let wel = global.welcome
-                                let lea = global.leave
+                                let wel = 'https://telegra.ph/file/6922e4375c183c8d1cfcb.jpg'  //https://telegra.ph/file/96c857aa540aef7d385eb.jpg
+                                let lea = 'https://telegra.ph/file/8c7792e78ed015a7d0a59.jpg'  //https://telegra.ph/file/999b3af6dac1b48769ee6.jpg
                              
                     await this.sendMessage(id, {
                             text: text,
@@ -1012,15 +1020,15 @@ global.dfail = (type, m, conn) => {
         rowner: 'This command is for *R-OWNER* Only',
         owner: 'This command is for *OWNER* Only',
         mods: 'This command is for *MODS* Only',
-        premium: 'This command is for *PREMIUM* Only\n\n Please send *.order* to purchase the *Premium* plan',
+        premium: 'This command is for *PREMIUM* Only\n\n> Please send *.order* to purchase the *Premium* plan',
         group: 'This command is for *GROUP* Only',
         private: 'This command is for *PRIVATE* Only',
         admin: 'This command is for *ADMINS* Only',
         botAdmin: 'This command is for *BOT-ADMINS* Only',
         onlyprem: 'This command is for *PREMIUM* Only',
-        nsfw: 'This Command Has Not Been Activated In This Group.\n\nEnable This Feature By Writing *.enable nsfw*',
-        rpg: 'This Command Has Not Been Activated In This Group.\n\nEnable This Feature By Writing *.enable rpg*',
-        game: 'This Command Has Not Been Activated In This Group.\n\nEnable This Feature By Writing *.enable game*',
+        nsfw: 'This Command Has Not Been Activated In This Group.\n\n> Enable This Feature By Writing *.enable nsfw*',
+        rpg: 'This Command Has Not Been Activated In This Group.\n\n> Enable This Feature By Writing *.enable rpg*',
+        game: 'This Command Has Not Been Activated In This Group.\n\n> Enable This Feature By Writing *.enable game*',
         xmaze: 'This group does not allow this feature to be used. please join this group:\nhttps://chat.whatsapp.com/FJRtTzRKxP8A2wT6fcCW3s\n\n disable this feature by writing .enable allfitur',
         restrict: '*FEATURES TURNED OFF BY OWNERS*',
         unreg: '*Indonesian*\nSilahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Maximus.19*\n══════════════════════\n*English*\nPlease register to use this feature by typing:\n\n*#register name.age*\n\nExample: *#register Maximus.19*'
