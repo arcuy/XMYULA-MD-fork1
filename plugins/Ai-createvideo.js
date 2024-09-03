@@ -29,14 +29,14 @@ const handler = async (m, { conn, command, usedPrefix, args, text }) => {
               + `*Voice:* ${check.result.meta.video_voice}\n`
               + `*Content:* ${check.result.meta.content}`
           let maximus = await conn.sendFile(m.chat, check.result.meta.thumbnail_url, null, cap, m)
-          await new Promise(resolve => setTimeout(resolve, 5000)); // Jeda 5 detik sebelum cek lagi
+          await new Promise(resolve => setTimeout(resolve, 5000)); // Jeda 5 detik 
           await conn.sendMessage(m.chat, { video: { url: check.result.video_url }, caption: wm }, { quoted: maximus })
 
-          break; // Menghentikan loop setelah transaksi sukses
+          break; // Menghentikan loop
 
         } else {
           m.reply('Terjadi kesalahan saat memproses.');
-          break; // Menghentikan loop jika ada kesalahan
+          break; // Menghentikan loop
         }
       }
     }
