@@ -1,70 +1,170 @@
+import {
+	youtubedl
+} from '@bochilteam/scraper';
+import {
+	toAudio
+} from '../lib/converter.js'
+import api from 'btch-downloader';
 import search from 'yt-search';
 import fetch from 'node-fetch';
-import api from 'btch-downloader';
+import ytdl from 'ytdl-core';
+import fs from 'fs';
 
-let handler = async (m, { conn, text }) => {
-  if (!text) return m.reply('*example*: .play eula song');
-    let results = await search(text);
-    let videoId = results.videos[0].videoId;
-    let durasi = results.videos[0].timestamp;
-    let thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
-    let upload = results.videos[0].ago;
-    let views = results.videos[0].views;
-    let links = results.videos[0].url;
-    let title = results.videos[0].title
-    let detik = results.videos[0].seconds
+let handler = async (m, {
+	conn,
+	text
+}) => {
+	if (!text) return m.reply('*example*: .play eula song');
+	if (text.startsWith('https://')) return m.reply(`Silahkan gunakan \`.ytmp3 atau .yta\` untuk mendapatkan audio`)
+	let results = await search(text);
+	let videoId = results.videos[0].videoId;
+	let durasi = results.videos[0].timestamp;
+	let thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+	let author = results.videos[0].author.name;
+	let views = results.videos[0].views;
+	let links = results.videos[0].url;
+	let title = results.videos[0].title
+	let detik = results.videos[0].seconds
 
 
-    let infoText = `  ◦ *Duration*: ${durasi}
-  ◦ *Upload*: ${upload}
+	let infoText = `  ◦ *Duration*: ${durasi}
+  ◦ *Author*: ${author}
   ◦ *Views*: ${views}
   
-YTdl By api.betabotz.eu.org
-Search By github.com/talmobi/yt-search
-Sent By ${global.info.namebot}`;
+YT-DL By 
+- api.betabotz.eu.org
+- api.botcahx.eu.org
+- github:fent/node-ytdl-core
+- github:bochilteam/scraper
+- npm:btch-downloader 
 
-    var pesan = conn.sendMessage(m.chat, {
-            text: infoText,
-            contextInfo: {
-                forwardingScore: 9999,
-                isForwarded: true,
-                   forwardedNewsletterMessageInfo: {
-                   newsletterJid: global.info.channel,
-                   serverMessageId: null,
-                   newsletterName: global.info.namechannel,
-                   },
-                   externalAdReply: {
-                   title: "AUDIO SEDANG DI KIRIM",
-                   body: `Youtube Play by ${global.info.namebot}`,
-                   thumbnailUrl: thumbnailUrl,
-                   sourceUrl: links,
-                   mediaType: 1,
-                   renderLargerThumbnail: true
-                   },
-                },
-            }, {});
+SEARCH By 
+- github.com/talmobi/yt-search
 
-    if (detik > 900) return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit`);
-    try {
-    const yt = await( await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${links}&apikey=${lann}`)).json()
-    await conn.sendMessage(m.chat, { audio: { url: yt.result.mp3 }, mimetype: 'audio/mpeg' }, { quoted: m });
-  } catch (e) {
-    console.log(e);
-    try {
-        const xmwjj = await api.youtube(links)
-        await conn.sendMessage(m.chat, { audio: { url: xmwjj.mp4 }, mimetype: 'audio/mpeg' }, { quoted: m });
-        } catch (e) {
-           console.log(e)
-           m.reply(`An error occurred while searching for the song: ${e.message}`);
-        }
-  }
+SENT By 
+- ${global.info.namebot}`;
+
+	var pesan = conn.sendMessage(m.chat, {
+		text: infoText,
+		contextInfo: {
+			forwardingScore: 9999,
+			isForwarded: true,
+			forwardedNewsletterMessageInfo: {
+				newsletterJid: global.info.channel,
+				serverMessageId: null,
+				newsletterName: global.info.namechannel,
+			},
+			externalAdReply: {
+				title: "AUDIO SEDANG DI KIRIM",
+				body: `Youtube Play by Assisten ${global.info.namebot}`,
+				thumbnailUrl: thumbnailUrl,
+				sourceUrl: links,
+				mediaType: 1,
+				renderLargerThumbnail: true
+			},
+		},
+	}, {});
+
+	if (detik > 900) return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit_`);
+	try {
+		const maxigan = await ytdlcore(links)
+		let audio = await toAudio(maxigan.buffer, 'mp4')
+		let doc = {
+			audio: audio.data,
+			mimetype: 'audio/mp4',
+			fileName: `${title}`
+		};
+		await conn.sendMessage(m.chat, doc, {
+			quoted: m
+		});
+	} catch {
+		try {
+			const yt = await (await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${links}&apikey=${lann}`)).json()
+			await conn.sendMessage(m.chat, {
+				audio: {
+					url: yt.result.mp3
+				},
+				mimetype: 'audio/mpeg'
+			}, {
+				quoted: m
+			});
+		} catch (e) {
+			console.log(e);
+			try {
+				let btch = api.youtube(links)
+				await conn.sendMessage(m.chat, {
+					audio: {
+						url: btch.mp3
+					},
+					mimetype: 'audio/mpeg'
+				}, {
+					quoted: m
+				});
+			} catch (e) {
+				console.log(e)
+				try {
+					let boc = await youtubedl(links)
+					let mx = await boc.audio['128kbps'].download()
+					await conn.sendMessage(m.chat, {
+						audio: {
+							url: mx
+						},
+						mimetype: 'audio/mpeg'
+					}, {
+						quoted: m
+					});
+				} catch (e) {
+					console.log(e)
+					m.reply(`An error occurred while searching for the song: ${e.message}`);
+				}
+			}
+		}
+	}
 };
 
 handler.help = ['youtubeplay'].map(v => v + ' name/url');
 handler.tags = ['downloader'];
 handler.command = /^(ytplay|play|youtubeplay|song|music)$/i;
-handler.register = false
-handler.premium = false;
 handler.limit = true;
+handler.register = true;
 
 export default handler;
+
+async function ytdlcore(url) {
+	try {
+		const agent = ytdl.createAgent(JSON.parse(fs.readFileSync("ytdl-cookie.json")));
+		const {
+			videoDetails
+		} = await ytdl.getInfo(url, {
+			lang: "id",
+			agent
+		});
+		const stream = ytdl(url, {
+			filter: 'videoandaudio',
+			agent
+		});
+		const chunks = [];
+		stream.on("data", (chunk) => {
+			chunks.push(chunk);
+		});
+		await new Promise((resolve, reject) => {
+			stream.on("end", resolve);
+			stream.on("error", reject);
+		});
+		const buffer = Buffer.concat(chunks);
+		return {
+			meta: {
+				title: videoDetails.title,
+				channel: videoDetails.author.name,
+				seconds: videoDetails.lengthSeconds,
+				description: videoDetails.description,
+				image: videoDetails.thumbnails.slice(-1)[0].url,
+				resolusi: videoDetails.embed,
+			},
+			buffer: buffer,
+			size: buffer.length,
+		};
+	} catch (error) {
+		throw error;
+	}
+}
