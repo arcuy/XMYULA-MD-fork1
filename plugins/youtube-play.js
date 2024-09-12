@@ -1,3 +1,4 @@
+// MADE BY XM4ZE https://github.com/XM4ZE
 import {
 	youtubedl
 } from '@bochilteam/scraper';
@@ -26,7 +27,7 @@ let handler = async (m, {
 	let title = results.videos[0].title
 	let detik = results.videos[0].seconds
 
-
+// Do not change below
 	let infoText = `  ◦ *Duration*: ${durasi}
   ◦ *Author*: ${author}
   ◦ *Views*: ${views}
