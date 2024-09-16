@@ -15,7 +15,7 @@ global.lann = 'Enter your apikey' // apikey Beta
 // ISI APIKEY KALIAN DI BAGIAN 'ENTER YOUR APIKEY' SIMBOL JANGAN DI HAPUS
 global.APIs = {
   rose: 'https://api.itsrose.rest',
-  TioXD: 'https://api.botcahx.eu.org',
+  btc: 'https://api.botcahx.eu.org',
   lann: 'https://api.betabotz.org',
 } 
 
