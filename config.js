@@ -35,7 +35,7 @@ global.info = {
 	namebot: 'Assisten YuLa',
 	nameown: 'Maximus Store',
 	channel: '120363241570452835@newsletter',
-	namechannel: 'YULA | Whatsapp Bots'
+	namechannel: 'XM4ZE | Whatsapp Bots'
 }
 
 
@@ -54,9 +54,9 @@ global.prems = ['6281283516246', '6288225750488'] // Opsional boleh ganti atau t
 
 /*=========== WATERMARK ===========*/
 // BOLEH DI EDIT ASALKAN JANGAN ADA SIMBOL YANG DI HAPUS
-global.wm = 'ᴀꜱꜱɪꜱᴛᴇɴ ʏᴜʟᴀ 🌐' // Opsional boleh ganti atau tidak 
+global.wm = 'XMYULA' // Opsional boleh ganti atau tidak 
 global.author = 'XM4ZE' // Opsional boleh ganti atau tidak 
-global.stickpack = 'ᴀꜱꜱɪꜱᴛᴇɴ ʏᴜʟᴀ 🌐' // Opsional boleh ganti atau tidak 
+global.stickpack = 'XMYULA' // Opsional boleh ganti atau tidak 
 global.stickauth = 'XM4ZE' // Opsional boleh ganti atau tidak 
 
 
