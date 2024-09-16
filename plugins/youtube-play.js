@@ -1,4 +1,8 @@
-// MADE BY XM4ZE https://github.com/XM4ZE
+/* 
+ * XM4ZE 
+ * https://github.com/XM4ZE
+ */
+
 import {
 	youtubedl
 } from '@bochilteam/scraper';
