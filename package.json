@@ -1,7 +1,7 @@
 {
-    "name": "YulaMD",
-    "version": "3.0.0",
-    "description": "Assisten Yula Record by Maximus",
+    "name": "XMYULA-MD",
+    "version": "4.0.0",
+    "description": "XMYULA-MD BY XM4ZE",
     "main": "index.js",
     "type": "module",
     "directories": {
@@ -11,11 +11,10 @@
     },
     "scripts": {
         "start": "node index.js",
-        "test": "node test.js",
-        "test2": "nodemon index.js"
+        "start2": "node main.js --pairing",
+        "test": "nodemon index.js"
     },
     "keywords": [
-        "termux-whatsapp-bot",
         "whatsapp-bot",
         "whatsapp",
         "js-whatsapp",
@@ -26,16 +25,16 @@
         "MD",
         "baileys-md"
     ],
-    "homepage": "https://github.com/XM4ZE/XMYULA",
+    "homepage": "https://github.com/XM4ZE/XMYULA-MD",
     "author": {
         "name": "XM4ZE"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/XM4ZE/XMYULA.git"
+        "url": "git+https://github.com/XM4ZE/XMYULA-MD.git"
     },
     "bugs": {
-        "url": "https://github.com/XM4ZE/XMYULA/issues"
+        "url": "https://github.com/XM4ZE/XMYULA-MD/issues"
     },
     "license": "MIT",
     "dependencies": {
