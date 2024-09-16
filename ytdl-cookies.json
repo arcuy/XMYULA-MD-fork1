@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1754843751.388253,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "--xxxx--",
+    "path": "/",
+    "sameSite": "--xxxx--",
+    "secure": true,
+    "session": false,
+    "storeId": "--xxxx--",
+    "value": "--xxxx--",
+    "id": 2
+  }
+]
